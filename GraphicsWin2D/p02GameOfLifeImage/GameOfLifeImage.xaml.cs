@@ -40,28 +40,34 @@ using System;
 using System.Numerics;
 using Microsoft.Graphics.Canvas.UI;
 using System.Linq;
+using Microsoft.Graphics.Canvas;
+using Windows.Graphics.DirectX;
+using Windows.Foundation;
 
-namespace p01GameOfLifeLines
+namespace p02GameOfLifeImage
 {
     /// <summary>
     /// Game of life.
     /// 
-    /// This version directly draws lines for the pixels onto the canvas
-    /// with many calls to DrawLine.
+    /// This version fills a buffer with the game of life data and then creates
+    /// an image from the buffer and displays the buffer with one call to DrawImage.
     /// 
     /// </summary>
-    public sealed partial class GameOfLifeLines : Page
+    public sealed partial class GameOfLifeImage : Page
     {
         private static int _width = 1080;
         private static int _height = 1080;
+        private static int _height4 = 4 * _height;
+        private static int _nBytes = _width * _height4;
 
         private bool[,] _current = new bool[_width, _height];
         private bool[,] _next = new bool[_width, _height];
 
+        private static Color _black = Color.FromArgb(255, 0, 0, 0);
+
         private int _nIteration;
         private int _nPixel;
         private int _minimum = int.MaxValue;
-        private int _nLines;
 
         private void CanvasResourcesCreate(CanvasAnimatedControl sender, CanvasCreateResourcesEventArgs args)
         {
@@ -77,6 +83,8 @@ namespace p01GameOfLifeLines
             }
         }
 
+        private byte[] _buffer = new byte[_nBytes];
+
         private void CanvasAnimatedDraw(ICanvasAnimatedControl sender, CanvasAnimatedDrawEventArgs args)
         {
             DrawEventCount();
@@ -87,43 +95,37 @@ namespace p01GameOfLifeLines
 
             _nIteration++;
             _nPixel = 0;
-            _nLines = 0;
 
-            int nPixelsToDraw = 0;
+            const float usedDpi = 96.0f;
 
-            for (int x = 0; x < _width; x++)
+            for (int x = 0, bufferIndex = 0; x < _width; x++)
             {
-                for (int y = 0; y < _height; y++)
+                for (int y = 0; y < _height; y++, bufferIndex += 4)
                 {
                     if (_next[x, y] = NextLiveValue(_current, x, y))
                     {
                         _nPixel++;
-                        nPixelsToDraw++;
+                        _buffer[bufferIndex + 3] = 0xff;
                     }
-                    else if (nPixelsToDraw > 0)
+                    else
                     {
-                        _nLines++;
-                        args.DrawingSession.DrawLine(new Vector2(x, y - nPixelsToDraw), new Vector2(x, y), Colors.Black);
-                        nPixelsToDraw = 0;
+                        _buffer[bufferIndex + 3] = 0;
                     }
-                }
-                if (nPixelsToDraw > 0)
-                {
-                    _nLines++;
-                    args.DrawingSession.DrawLine(new Vector2(x, _height - nPixelsToDraw), new Vector2(x, _height), Colors.Black);
-                    nPixelsToDraw = 0;
                 }
             }
             if (_nPixel < _minimum)
             {
                 _minimum = _nPixel;
             }
+            using (var bitmap = CanvasBitmap.CreateFromBytes(sender, _buffer, _width, _height, DirectXPixelFormat.B8G8R8A8UIntNormalized, usedDpi))
+            {
+                args.DrawingSession.DrawImage(bitmap, new Rect(0, 0, _width, _height), new Rect(0, 0, _width, _height), 1, CanvasImageInterpolation.NearestNeighbor);
+            }
 
-            args.DrawingSession.DrawText("FPS " + FramesPerSecond, new Vector2(10, 10), Colors.Black);
-            args.DrawingSession.DrawText("Step " + _nIteration, new Vector2(10, 30), Colors.Black);
-            args.DrawingSession.DrawText("Pixel " + _nPixel, new Vector2(10, 50), Colors.Black);
-            args.DrawingSession.DrawText("Minimum " + _minimum, new Vector2(10, 70), Colors.Black);
-            args.DrawingSession.DrawText("Lines " + _nLines, new Vector2(10, 90), Colors.Black);
+            args.DrawingSession.DrawText("FPS " + FramesPerSecond, new Vector2(10, 10), _black);
+            args.DrawingSession.DrawText("Step " + _nIteration, new Vector2(10, 30), _black);
+            args.DrawingSession.DrawText("Pixel " + _nPixel, new Vector2(10, 50), _black);
+            args.DrawingSession.DrawText("Minimum " + _minimum, new Vector2(10, 70), _black);
 
             var tmp = _next;
             _next = _current;
@@ -220,7 +222,7 @@ namespace p01GameOfLifeLines
 
         #region Constructor
 
-        public GameOfLifeLines()
+        public GameOfLifeImage()
         {
             InitializeComponent();
         }
@@ -234,3 +236,4 @@ namespace p01GameOfLifeLines
         #endregion
     }
 }
+

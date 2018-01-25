@@ -63,8 +63,6 @@ namespace p02GameOfLifeImage
         private bool[,] _current = new bool[_width, _height];
         private bool[,] _next = new bool[_width, _height];
 
-        private static Color _black = Color.FromArgb(255, 0, 0, 0);
-
         private int _nIteration;
         private int _nPixel;
         private int _minimum = int.MaxValue;
@@ -122,10 +120,10 @@ namespace p02GameOfLifeImage
                 args.DrawingSession.DrawImage(bitmap, new Rect(0, 0, _width, _height), new Rect(0, 0, _width, _height), 1, CanvasImageInterpolation.NearestNeighbor);
             }
 
-            args.DrawingSession.DrawText("FPS " + FramesPerSecond, new Vector2(10, 10), _black);
-            args.DrawingSession.DrawText("Step " + _nIteration, new Vector2(10, 30), _black);
-            args.DrawingSession.DrawText("Pixel " + _nPixel, new Vector2(10, 50), _black);
-            args.DrawingSession.DrawText("Minimum " + _minimum, new Vector2(10, 70), _black);
+            args.DrawingSession.DrawText("FPS " + FramesPerSecond, new Vector2(10, 10), Colors.Black);
+            args.DrawingSession.DrawText("Step " + _nIteration, new Vector2(10, 30), Colors.Black);
+            args.DrawingSession.DrawText("Pixel " + _nPixel, new Vector2(10, 50), Colors.Black);
+            args.DrawingSession.DrawText("Minimum " + _minimum, new Vector2(10, 70), Colors.Black);
 
             var tmp = _next;
             _next = _current;

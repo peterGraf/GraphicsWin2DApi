@@ -119,7 +119,7 @@ namespace p01GameOfLifeLines
                 _minimum = _nPixel;
             }
 
-            args.DrawingSession.DrawText("FPS " + FramesPerSecond, new Vector2(10, 10), Colors.Black);
+            args.DrawingSession.DrawText($"FPS {FramesPerSecond:F2}", new Vector2(10, 10), Colors.Black);
             args.DrawingSession.DrawText("Step " + _nIteration, new Vector2(10, 30), Colors.Black);
             args.DrawingSession.DrawText("Pixel " + _nPixel, new Vector2(10, 50), Colors.Black);
             args.DrawingSession.DrawText("Minimum " + _minimum, new Vector2(10, 70), Colors.Black);

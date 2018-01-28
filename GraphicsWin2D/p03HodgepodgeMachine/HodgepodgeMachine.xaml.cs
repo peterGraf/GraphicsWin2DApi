@@ -96,7 +96,7 @@ namespace p03HodgepodgeMachine
             _nIteration++;
             const float usedDpi = 96.0f;
 
-            if(_restart || _nIteration % 2048 == 0)
+            if (_restart || _nIteration % 2048 == 0)
             {
                 _restart = false;
                 CanvasResourcesCreate(null, null);
@@ -111,11 +111,11 @@ namespace p03HodgepodgeMachine
                 for (int y = 0; y < _height; y++, bufferIndex += 4)
                 {
                     byte state = (byte)((_next[x, y] = NextStateValue(_current, x, y)) & 0xff);
-                    if( x ==0 && y == 0)
+                    if (x == 0 && y == 0)
                     {
                         theState = state;
                     }
-                    else if(theState != state)
+                    else if (theState != state)
                     {
                         oneState = false;
                     }
@@ -123,46 +123,46 @@ namespace p03HodgepodgeMachine
                     switch (state % 16)
                     {
                         case 0:
-                            _buffer[bufferIndex + 0] = 100;
-                            _buffer[bufferIndex + 1] = 0;
-                            _buffer[bufferIndex + 2] = 0;
-                            _buffer[bufferIndex + 3] = 100;
+                            _buffer[bufferIndex + 0] = 255;
+                            _buffer[bufferIndex + 1] = 255;
+                            _buffer[bufferIndex + 2] = 255;
+                            _buffer[bufferIndex + 3] = 255;
                             break;
                         case 1:
-                            _buffer[bufferIndex + 0] = 0;
-                            _buffer[bufferIndex + 1] = 100;
-                            _buffer[bufferIndex + 2] = 0;
-                            _buffer[bufferIndex + 3] = 100;
+                            _buffer[bufferIndex + 0] = 255;
+                            _buffer[bufferIndex + 1] = 255;
+                            _buffer[bufferIndex + 2] = 180;
+                            _buffer[bufferIndex + 3] = 255;
                             break;
                         case 2:
-                            _buffer[bufferIndex + 0] = 0;
-                            _buffer[bufferIndex + 1] = 0;
+                            _buffer[bufferIndex + 0] = 255;
+                            _buffer[bufferIndex + 1] = 255;
                             _buffer[bufferIndex + 2] = 100;
-                            _buffer[bufferIndex + 3] = 100;
+                            _buffer[bufferIndex + 3] = 255;
                             break;
                         case 3:
-                            _buffer[bufferIndex + 0] = 0;
-                            _buffer[bufferIndex + 1] = 100;
-                            _buffer[bufferIndex + 2] = 100;
-                            _buffer[bufferIndex + 3] = 100;
+                            _buffer[bufferIndex + 0] = 255;
+                            _buffer[bufferIndex + 1] = 255;
+                            _buffer[bufferIndex + 2] = 0;
+                            _buffer[bufferIndex + 3] = 255;
                             break;
                         case 4:
-                            _buffer[bufferIndex + 0] = 100;
-                            _buffer[bufferIndex + 1] = 0;
-                            _buffer[bufferIndex + 2] = 100;
-                            _buffer[bufferIndex + 3] = 100;
-                            break;
-                        case 5:
-                            _buffer[bufferIndex + 0] = 180;
-                            _buffer[bufferIndex + 1] = 0;
-                            _buffer[bufferIndex + 2] = 0;
-                            _buffer[bufferIndex + 3] = 180;
-                            break;
-                        case 6:
-                            _buffer[bufferIndex + 0] = 0;
+                            _buffer[bufferIndex + 0] = 255;
                             _buffer[bufferIndex + 1] = 180;
                             _buffer[bufferIndex + 2] = 0;
-                            _buffer[bufferIndex + 3] = 180;
+                            _buffer[bufferIndex + 3] = 255;
+                            break;
+                        case 5:
+                            _buffer[bufferIndex + 0] = 255;
+                            _buffer[bufferIndex + 1] = 100;
+                            _buffer[bufferIndex + 2] = 0;
+                            _buffer[bufferIndex + 3] = 255;
+                            break;
+                        case 6:
+                            _buffer[bufferIndex + 0] = 255;
+                            _buffer[bufferIndex + 1] = 0;
+                            _buffer[bufferIndex + 2] = 0;
+                            _buffer[bufferIndex + 3] = 255;
                             break;
                         case 7:
                             _buffer[bufferIndex + 0] = 0;

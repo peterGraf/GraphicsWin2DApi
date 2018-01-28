@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p03HodgepodgeMachine", "p03
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p04HodgepodgeMachine", "p04HodgepodgeMachine\p04HodgepodgeMachine.csproj", "{67FC0E01-ACCD-4B05-977A-216E01413AA1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p05HodgepodgeMachineBlackAndWhite", "p05HodgepodgeMachineBlackAndWhite\p05HodgepodgeMachineBlackAndWhite.csproj", "{16491869-E355-486D-8638-02D9149B634E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -93,6 +95,24 @@ Global
 		{67FC0E01-ACCD-4B05-977A-216E01413AA1}.Release|x86.ActiveCfg = Release|x86
 		{67FC0E01-ACCD-4B05-977A-216E01413AA1}.Release|x86.Build.0 = Release|x86
 		{67FC0E01-ACCD-4B05-977A-216E01413AA1}.Release|x86.Deploy.0 = Release|x86
+		{16491869-E355-486D-8638-02D9149B634E}.Debug|ARM.ActiveCfg = Debug|ARM
+		{16491869-E355-486D-8638-02D9149B634E}.Debug|ARM.Build.0 = Debug|ARM
+		{16491869-E355-486D-8638-02D9149B634E}.Debug|ARM.Deploy.0 = Debug|ARM
+		{16491869-E355-486D-8638-02D9149B634E}.Debug|x64.ActiveCfg = Debug|x64
+		{16491869-E355-486D-8638-02D9149B634E}.Debug|x64.Build.0 = Debug|x64
+		{16491869-E355-486D-8638-02D9149B634E}.Debug|x64.Deploy.0 = Debug|x64
+		{16491869-E355-486D-8638-02D9149B634E}.Debug|x86.ActiveCfg = Debug|x86
+		{16491869-E355-486D-8638-02D9149B634E}.Debug|x86.Build.0 = Debug|x86
+		{16491869-E355-486D-8638-02D9149B634E}.Debug|x86.Deploy.0 = Debug|x86
+		{16491869-E355-486D-8638-02D9149B634E}.Release|ARM.ActiveCfg = Release|ARM
+		{16491869-E355-486D-8638-02D9149B634E}.Release|ARM.Build.0 = Release|ARM
+		{16491869-E355-486D-8638-02D9149B634E}.Release|ARM.Deploy.0 = Release|ARM
+		{16491869-E355-486D-8638-02D9149B634E}.Release|x64.ActiveCfg = Release|x64
+		{16491869-E355-486D-8638-02D9149B634E}.Release|x64.Build.0 = Release|x64
+		{16491869-E355-486D-8638-02D9149B634E}.Release|x64.Deploy.0 = Release|x64
+		{16491869-E355-486D-8638-02D9149B634E}.Release|x86.ActiveCfg = Release|x86
+		{16491869-E355-486D-8638-02D9149B634E}.Release|x86.Build.0 = Release|x86
+		{16491869-E355-486D-8638-02D9149B634E}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

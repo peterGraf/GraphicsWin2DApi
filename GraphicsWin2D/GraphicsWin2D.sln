@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p02GameOfLifeImage", "p02Ga
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p03HodgepodgeMachine", "p03HodgepodgeMachine\p03HodgepodgeMachine.csproj", "{AE9C35C0-0829-4389-A9FB-C741D64C5AA2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p04HodgepodgeMachine", "p04HodgepodgeMachine\p04HodgepodgeMachine.csproj", "{67FC0E01-ACCD-4B05-977A-216E01413AA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -73,6 +75,24 @@ Global
 		{AE9C35C0-0829-4389-A9FB-C741D64C5AA2}.Release|x86.ActiveCfg = Release|x86
 		{AE9C35C0-0829-4389-A9FB-C741D64C5AA2}.Release|x86.Build.0 = Release|x86
 		{AE9C35C0-0829-4389-A9FB-C741D64C5AA2}.Release|x86.Deploy.0 = Release|x86
+		{67FC0E01-ACCD-4B05-977A-216E01413AA1}.Debug|ARM.ActiveCfg = Debug|ARM
+		{67FC0E01-ACCD-4B05-977A-216E01413AA1}.Debug|ARM.Build.0 = Debug|ARM
+		{67FC0E01-ACCD-4B05-977A-216E01413AA1}.Debug|ARM.Deploy.0 = Debug|ARM
+		{67FC0E01-ACCD-4B05-977A-216E01413AA1}.Debug|x64.ActiveCfg = Debug|x64
+		{67FC0E01-ACCD-4B05-977A-216E01413AA1}.Debug|x64.Build.0 = Debug|x64
+		{67FC0E01-ACCD-4B05-977A-216E01413AA1}.Debug|x64.Deploy.0 = Debug|x64
+		{67FC0E01-ACCD-4B05-977A-216E01413AA1}.Debug|x86.ActiveCfg = Debug|x86
+		{67FC0E01-ACCD-4B05-977A-216E01413AA1}.Debug|x86.Build.0 = Debug|x86
+		{67FC0E01-ACCD-4B05-977A-216E01413AA1}.Debug|x86.Deploy.0 = Debug|x86
+		{67FC0E01-ACCD-4B05-977A-216E01413AA1}.Release|ARM.ActiveCfg = Release|ARM
+		{67FC0E01-ACCD-4B05-977A-216E01413AA1}.Release|ARM.Build.0 = Release|ARM
+		{67FC0E01-ACCD-4B05-977A-216E01413AA1}.Release|ARM.Deploy.0 = Release|ARM
+		{67FC0E01-ACCD-4B05-977A-216E01413AA1}.Release|x64.ActiveCfg = Release|x64
+		{67FC0E01-ACCD-4B05-977A-216E01413AA1}.Release|x64.Build.0 = Release|x64
+		{67FC0E01-ACCD-4B05-977A-216E01413AA1}.Release|x64.Deploy.0 = Release|x64
+		{67FC0E01-ACCD-4B05-977A-216E01413AA1}.Release|x86.ActiveCfg = Release|x86
+		{67FC0E01-ACCD-4B05-977A-216E01413AA1}.Release|x86.Build.0 = Release|x86
+		{67FC0E01-ACCD-4B05-977A-216E01413AA1}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

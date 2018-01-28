@@ -45,15 +45,13 @@ using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace p03HodgepodgeMachine
+namespace p04HodgepodgeMachine
 {
     /// <summary>
     /// The hodgepodge machine.
     /// 
     /// A kind of cellular automaton for time-spatially discrete simulations.
     /// See https://arxiv.org/pdf/1507.08783.pdf.
-    /// 
-    /// Due to some bug this version does not produce the typical wave pattern. But is is nice nevertheless.
     /// 
     /// </summary>
     public sealed partial class HodgepodgeMachine : Page
@@ -69,7 +67,7 @@ namespace p03HodgepodgeMachine
         private int _nIteration;
 
         private int _maxState = 127; //  the maximal state level
-        private double _k1 = 3; // the weight of the cell in the ignition state from the interval ( 0 , maxState )
+        private double _k1 = 2; // the weight of the cell in the ignition state from the interval ( 0 , maxState )
         private double _k2 = 2; // the weight of the cell in the ignition state maxState
         private int _g = 1; //  the number of levels crossed in one simulation step
 
@@ -79,9 +77,10 @@ namespace p03HodgepodgeMachine
             {
                 for (int y = 0; y < _height; y++)
                 {
-                    if (RandomBool())
+                    //if (RandomBool())
                     {
                         _current[x, y] = _random.Next(_maxState + 1);
+                        _next[x, y] = _random.Next(_maxState + 1);
                     }
                 }
             }
@@ -112,7 +111,7 @@ namespace p03HodgepodgeMachine
             {
                 for (int y = 0; y < _height; y++, bufferIndex += 4)
                 {
-                    byte state = (byte)((_next[x, y] = NextStateValue(_current, x, y)) & 0xff);
+                    byte state = (byte)(_next[x, y] = NextStateValue(_current, x, y));
                     if (x == 0 && y == 0)
                     {
                         theState = state;
@@ -262,13 +261,16 @@ namespace p03HodgepodgeMachine
                     {
                         int state = rectangle[(x + xOffset) % _width, (y + yOffset) % _height];
                         sum += state;
-                        if (state < _maxState)
+                        if (state > 0)
                         {
-                            a++;
-                        }
-                        else
-                        {
-                            b++;
+                            if (state < _maxState)
+                            {
+                                a++;
+                            }
+                            else
+                            {
+                                b++;
+                            }
                         }
                     }
                 }
